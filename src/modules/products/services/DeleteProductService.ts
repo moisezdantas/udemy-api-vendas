@@ -1,5 +1,5 @@
 import AppError from '@shared/errors/AppError';
-import { ProductRepository } from './../typeorm/repositories/ProductsRepositories';
+import { ProductRepository } from '../typeorm/repositories/ProductsRepository';
 import { getCustomRepository } from 'typeorm';
 
 interface IRequest {
