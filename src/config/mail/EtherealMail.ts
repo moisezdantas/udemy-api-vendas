@@ -1,20 +1,12 @@
 import nodemailer from 'nodemailer';
-import HandlebarsMailTemplate from './HandlebarsMailTemplate';
+import HandlebarsMailTemplate, {
+  IParseMailTemplate,
+} from './HandlebarsMailTemplate';
 
 interface IMailContact {
   name: string;
   email: string;
 }
-
-interface ITemplateVariable {
-  [key: string]: string | number;
-}
-
-interface IParseMailTemplate {
-  template: string;
-  variables: ITemplateVariable;
-}
-
 interface ISendMail {
   to: IMailContact;
   from?: IMailContact;
