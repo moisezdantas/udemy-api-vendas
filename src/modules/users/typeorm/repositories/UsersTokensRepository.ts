@@ -17,13 +17,8 @@ export class UserTokensRepository extends Repository<UserToken> {
     const userToken = this.create({
       user_id,
     });
-    try {
-      console.log('generate', user_id);
-      console.log('generate', userToken);
-      await this.save(userToken);
-    } catch (error) {
-      console.log(error);
-    }
+
+    await this.save(userToken);
 
     console.log('generate', userToken);
 
