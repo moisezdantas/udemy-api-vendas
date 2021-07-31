@@ -2,11 +2,11 @@ import AppError from '@shared/errors/AppError';
 import { UserTokensRepository } from './../typeorm/repositories/UsersTokensRepository';
 import { UsersRepository } from './../typeorm/repositories/UsersRepository';
 import { getCustomRepository } from 'typeorm';
+import EtherealMail from '@config/mail/EtherealMail';
 
 interface IRequest {
   email: string;
 }
-
 export default class SendForgotPasswordEmailService {
   public async execute({ email }: IRequest): Promise<void> {
     const usersRepository = getCustomRepository(UsersRepository);
@@ -14,16 +14,15 @@ export default class SendForgotPasswordEmailService {
 
     const user = await usersRepository.findByEmail(email);
 
-    console.log(email);
-
     if (!user) {
       throw new AppError('User does not exists.');
     }
 
-    console.log(user);
-
     const token = await userTokenRepository.generate(user.id);
 
-    console.log(token);
+    await EtherealMail.sendMail({
+      to: email,
+      body: `Solicitação de redefinição de senha recebida: ${token?.token}`,
+    });
   }
 }
