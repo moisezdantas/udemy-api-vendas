@@ -33,7 +33,7 @@ export default class SendForgotPasswordEmailService {
         name: user.name,
         email: user.email,
       },
-      subject: '[API Vendas] REcuperação de Senha',
+      subject: '[API Vendas] Recuperação de Senha',
       templateData: {
         file: forgotPasswordTemplate,
         variables: {
