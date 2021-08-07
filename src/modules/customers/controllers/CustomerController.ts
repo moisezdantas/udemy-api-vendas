@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
-import CreateCustomerService from '../typeorm/services/CreateCustomerService';
-import DeleteCustomerService from '../typeorm/services/DeleteCustomerService';
-import ListCustomerService from '../typeorm/services/ListCustomerService';
-import ShowCustomerService from '../typeorm/services/ShowCustomerService';
-import UpdateCustomerService from '../typeorm/services/UpdateCustomerService';
+import CreateCustomerService from '../services/CreateCustomerService';
+import DeleteCustomerService from '../services/DeleteCustomerService';
+import ListCustomerService from '../services/ListCustomerService';
+import ShowCustomerService from '../services/ShowCustomerService';
+import UpdateCustomerService from '../services/UpdateCustomerService';
 
 export default class CustomerController {
   public async index(request: Request, response: Response): Promise<Response> {
