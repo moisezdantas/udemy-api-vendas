@@ -1,7 +1,7 @@
 import AppError from '@shared/errors/AppError';
 import { ProductRepository } from '../typeorm/repositories/ProductsRepository';
 import { getCustomRepository } from 'typeorm';
-import RedisCache from '@shared/cache/RedisCache';
+import redisCache from '@shared/cache/RedisCache';
 
 interface IRequest {
   id: string;
@@ -10,8 +10,6 @@ interface IRequest {
 class DeleteProductService {
   public async execute({ id }: IRequest): Promise<void> {
     const productsRepository = getCustomRepository(ProductRepository);
-
-    const redisCache = new RedisCache();
 
     const product = await productsRepository.findOne(id);
 
