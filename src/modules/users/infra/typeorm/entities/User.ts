@@ -7,8 +7,9 @@ import {
 } from 'typeorm';
 
 import { Exclude, Expose } from 'class-transformer';
+import { IUser } from '@modules/users/domain/models/IUser';
 @Entity('users')
-class User {
+class User implements IUser {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
