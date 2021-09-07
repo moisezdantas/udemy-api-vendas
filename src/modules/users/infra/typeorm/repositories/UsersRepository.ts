@@ -12,7 +12,9 @@ class UsersRepository implements IUsersRepository {
   }
 
   public async findAll(): Promise<IUser[]> {
-    throw new Error('Method not implemented.');
+    const users = await this.ormRepository.find();
+
+    return users;
   }
 
   public async create({ name, email, password }: ICreateUser): Promise<IUser> {
